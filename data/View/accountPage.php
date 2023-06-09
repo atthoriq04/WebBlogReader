@@ -4,7 +4,6 @@
             <p id="fMessage"></p>
         </div>
         <h2 id="infoTitle">Your Details</h2>
-        <div class="validate"></div>
         <div id="accountInfo">
             <h4>Username: <span id="username"></span></h4>
             <h4>Name : <span id="name">Name</span></h4>

@@ -9,6 +9,7 @@ document.getElementById("username").innerHTML = userdata["username"];
 document.getElementById("name").innerHTML = userdata["name"];
 document.getElementById("role").innerHTML =
   userdata["isAdmin"] > 0 ? "admin" : "user";
+console.log(userdata.name);
 //Flash Message Controlling
 if (localStorage.getItem("message") != null) {
   let localData = JSON.parse(localStorage.getItem("message"));

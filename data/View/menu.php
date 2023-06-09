@@ -13,9 +13,9 @@
         <h1>Article Maker Fucker</h1>
         <var>
             <ul>
-                <li><a href="../data/config/logout.php" class=""> Write </a></li>
-                <li><a href="../data/config/logout.php" class=""> Search </a></li>
-                <li><a href="account.php" class=""> Account </a></li>
+                <li><a href="index.php" class="admin"> Home </a></li>
+                <li><a href="manageArticle.php" class="writeArticle"> Write Article </a></li>
+                <li><a href="account.php" class="account"> Account </a></li>
                 <li><a href="../data/config/logout.php" class=""> Logout </a></li>
             </ul>
         </var>

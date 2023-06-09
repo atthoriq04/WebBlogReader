@@ -59,7 +59,7 @@ function editAccount($con)
     $id = $_SESSION["userdata"]["userId"];
     $GLOBALS['redirect'] = "../../public/account.php";
     $userData = dbSelect($con, "SELECT username FROM user WHERE username = '$username' AND userId != $id");
-    if ($username == "" || $name = "") {
+    if ($username == "" || $name == "") {
         return array("isEdit" => true, "message" => "Username or Name cannot be empty");
     }
     if (count($userData) > 0) {
