@@ -1,13 +1,14 @@
 <?php
 class category
 {
-
+    private $query;
     public function __construct()
     {
-        require "../data/function/query.php";
+        include_once "../data/function/query.php";
+        $this->query = new query();
     }
     public function getCategory($con)
     {
-        return dbSelect($con, "SELECT * FROM noteCategory");
+        return $this->query->dbSelect($con, "SELECT * FROM noteCategory");
     }
 }

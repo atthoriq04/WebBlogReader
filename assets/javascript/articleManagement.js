@@ -1,8 +1,8 @@
 import { categorySelector, validateArticle } from "./controller/article.js";
 document.title = "Write an Article";
 const form = document.getElementById("articleForm");
-
 categorySelector(document.getElementById("category"), categories);
+
 if (localStorage.getItem["editArcticle"] != null) {
   document.title = "Edit your Article";
 }

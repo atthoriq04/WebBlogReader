@@ -1,6 +1,6 @@
 <?php
 require "../function/connection.php";
-require "../function/query.php";
+include "../function/query.php";
 session_start();
 $redirect = "main.php";
 $loginMessage = array();
@@ -19,16 +19,18 @@ if (isset($_POST['newOne'])) {
 
 function registerAccount($con)
 {
+
+    $query = new query();
     $col = "username, name, password, isAdmin";
     $username = $_POST['Rusername'];
-    $userData = dbSelect($con, "SELECT username FROM user WHERE username = '$username'");
+    $userData = $query->dbSelect($con, "SELECT username FROM user WHERE username = '$username'");
     $pass = $_POST['Rpassword'];
     if (count($userData) > 0) {
         $loginMessage = array("isLogin" => false, "message" => "Username has been Registered Before, Please Choose Another username");
     } else {
         $password = password_hash($pass, PASSWORD_DEFAULT);
         $data = "'$username', '$username', '$password', '0'";
-        dbInsert($con, "user", $data, $col);
+        $query->dbInsert($con, "user", $data, $col);
         $loginMessage = array("isLogin" => true, "message" => "Your Account has successfully Created, Please Login to Continue");
     }
     return $loginMessage;
@@ -36,8 +38,10 @@ function registerAccount($con)
 
 function loginAccount($con)
 {
+
+    $query = new query();
     $username = $_POST['username'];
-    $userData = dbSelect($con, "SELECT * FROM user WHERE username = '$username'");
+    $userData = $query->dbSelect($con, "SELECT * FROM user WHERE username = '$username'");
     $pass = $_POST['password'];
     if (count($userData) < 0) {
         $loginMessage = array("isLogin" => true, "message" => "Account with username: $username does not Exist");
@@ -53,36 +57,40 @@ function loginAccount($con)
 
 function editAccount($con)
 {
+
+    $query = new query();
     $username = $_POST["uName"];
     $name = $_POST["name"];
     $data = "username = '$username', name = '$name'";
     $id = $_SESSION["userdata"]["userId"];
     $GLOBALS['redirect'] = "../../public/account.php";
-    $userData = dbSelect($con, "SELECT username FROM user WHERE username = '$username' AND userId != $id");
+    $userData = $query->dbSelect($con, "SELECT username FROM user WHERE username = '$username' AND userId != $id");
     if ($username == "" || $name == "") {
         return array("isEdit" => true, "message" => "Username or Name cannot be empty");
     }
     if (count($userData) > 0) {
         return array("isEdit" => true, "message" => "Username $username Already being used");
     }
-    dbUpdate($con, "user", "$data", "userId = $id");
+    $query->dbUpdate($con, "user", "$data", "userId = $id");
     $_SESSION["userdata"]["username"] = "$username";
     $_SESSION["userdata"]["name"] = $name;
     return array("isEdit" => false, "message" => "Edit Successfully");
 }
 function changePassword($con)
 {
+
+    $query = new query();
     $oldPassword = $_POST['oldOne'];
     $newPassword = $_POST['newOne'];
     $id = $_SESSION["userdata"]["userId"];
     $GLOBALS['redirect'] = "../../public/account.php";
-    $oldUsed = dbSelectOne($con, "user", "password", "userId = $id");
+    $oldUsed = $query->dbSelectOne($con, "user", "password", "userId = $id");
     $password = password_hash($newPassword, PASSWORD_DEFAULT);
     $data = "password = '$password'";
     if (!password_verify($oldPassword, $oldUsed)) {
         return array("isPassword" => true, "message" => "Your Current Password is Wrong");
     }
-    dbUpdate($con, "user", $data, "userId = $id");
+    $query->dbUpdate($con, "user", $data, "userId = $id");
     return array("isPassword" => false, "message" => "Password Changed Successfully");
 }
 

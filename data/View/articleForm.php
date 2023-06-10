@@ -14,7 +14,7 @@
             <label for="content">Article Text</label>
             <textarea name="content" id="content" cols="100" rows="30"></textarea>
             <p class="validate" id="validateContent"></p>
-            <input type="checkbox" name="isPrivate" id="isPrivate">
+            <input type="checkbox" name="isPrivate" id="isPrivate" value="1">
             <label for="isPrivate">make this content private</label>
             <button type="submit" name="submitArticle">
                 Submit Article
