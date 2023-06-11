@@ -11,7 +11,7 @@ class article
     {
         include_once "../data/function/JSON.php";
         $rawDatas = $this->query->dbSelect($con, "SELECT * FROM thenotes INNER JOIN user ON thenotes.userId = user.userId INNER JOIN notecategory ON thenotes.categoryId = notecategory.categoryId");
-        $toKeep = ["id", "username", "title", "Category", "notes", "createdAt", "modifiedAt", "isPrivate"];
+        $toKeep = ["id", "userId", "username", "title", "categoryId", "Category", "notes", "createdAt", "modifiedAt", "isPrivate"];
         $datas = array();
         foreach ($rawDatas as $rawData) {
             $row = array();
@@ -19,21 +19,22 @@ class article
                 if (isset($rawData[$keep])) {
                     $row[$keep] = $rawData[$keep];
                     if ($keep == "notes") {
-                        $row[$keep] = explode("\n", $rawData[$keep]);
+                        $row[$keep] = explode("\n", html_entity_decode($row[$keep]));
                     }
                 }
             }
             $datas[] = $row;
         }
         $json = new JSON();
-        $json->saveData($datas, "master.json");
+        return $json->saveData($datas, "master.json");
     }
     public function saveArticle($datas, $con)
     {
         $title = $datas["title"];
-        $content = $datas["content"];
+        $content = htmlspecialchars($datas["content"]);
         $category = $datas["category"];
         $privacy = $datas["privacy"];
+
 
         $id = $_SESSION["userdata"]["userId"];
         $timeStamp =  time();
@@ -41,7 +42,7 @@ class article
             $privacy = 0;
         }
         $data = "$id, '$category','$title', '$content', '$timeStamp', '$timeStamp', '$privacy'";
-        $col = "userid, category, title, notes, createdAt, modifiedAt, isPrivate";
+        $col = "userid, categoryId, title, notes, createdAt, modifiedAt, isPrivate";
         $this->query->dbInsert($con, "theNotes", $data, $col);
         header("location: account.php");
     }

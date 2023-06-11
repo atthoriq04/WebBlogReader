@@ -3,7 +3,7 @@ import { emptyValidate } from "./functions.js";
 function categorySelector(parent, datas) {
   datas.forEach((category) => {
     const opt = document.createElement("option");
-    opt.value = category.id;
+    opt.value = category.categoryId;
     console.log(category["Category"]);
     opt.innerHTML = category.Category;
     parent.appendChild(opt);
