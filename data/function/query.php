@@ -7,6 +7,12 @@ class query
         $data = $result->fetch_all(MYSQLI_ASSOC);
         return $data;
     }
+    function dbSelectOne($con, $tableName, $columnName, $condition)
+    {
+        $query = "SELECT $columnName FROM $tableName WHERE $condition";
+        $res = $con->query($query)->fetch_assoc();
+        return $res[$columnName];
+    }
     function dbInsert($con, $tableName, $datas, $col)
     {
         $query = "INSERT INTO $tableName ($col) VALUES ($datas)";
@@ -26,10 +32,12 @@ class query
             die;
         }
     }
-    function dbSelectOne($con, $tableName, $columnName, $condition)
+    function dbDelete($con, $tableName, $condition)
     {
-        $query = "SELECT $columnName FROM $tableName WHERE $condition";
-        $res = $con->query($query)->fetch_assoc();
-        return $res[$columnName];
+        $query = "DELETE FROM $tableName WHERE $condition";
+        if (!$con->query($query) === true) {
+            echo "Error: " . $query . "<br>" . $con->error;
+            die;
+        }
     }
 }

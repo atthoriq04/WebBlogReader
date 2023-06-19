@@ -1,8 +1,11 @@
+import master from "../jsons/master.json" assert { type: "json" };
 import {
   showEdit,
   showChangePassword,
   validatePassword,
 } from "./controller/user.js";
+import { showArticle, readArticle } from "./controller/article.js";
+const masterData = JSON.parse(JSON.stringify(master));
 const userdata = JSON.parse(user);
 document.title = "Account";
 document.getElementById("username").innerHTML = userdata["username"];
@@ -22,7 +25,7 @@ if (localStorage.getItem("message") != null) {
     showChangePassword();
   document.getElementById("fMessage").innerHTML = localData["message"];
 }
-//
+//Account Edit Controlling
 document.getElementById("accountInfo").addEventListener("click", function (e) {
   if (e.target.tagName === "A") e.preventDefault();
   if (e.target.id === "editAccount")
@@ -40,3 +43,6 @@ document.getElementById("accountInfo").addEventListener("click", function (e) {
 
   if (e.target.id === "toAccount") location.reload();
 });
+
+const content = document.getElementById("work");
+showArticle(masterData, content, true, userdata.userId);

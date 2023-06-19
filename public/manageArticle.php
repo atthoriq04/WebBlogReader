@@ -9,6 +9,10 @@ if (loginValidate()) {
         $datas = array("title" => $_POST['title'], "content" => $_POST['content'], "category" => $_POST['category'], "privacy" => $_POST['isPrivate']);
         $article->saveArticle($datas, $con);
     }
+    if (isset($_GET['deleteId'])) {
+        echo "lanjoot";
+        die;
+    }
     writeArticle();
 }
 

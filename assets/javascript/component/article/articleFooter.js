@@ -7,9 +7,9 @@ function articleFooter(
   modified
 ) {
   const div = document.createElement("div");
-  div.classList.add("articleLink");
+  div.classList.add("articleFoot");
   const postedBy = document.createElement("p");
-  const text1 = document.createTextNode("Posted By : ");
+  const text1 = document.createTextNode("Posted By: ");
   const text2 = document.createTextNode(" on ");
   const usernameLink = document.createElement("a");
   usernameLink.innerHTML = username;
@@ -23,11 +23,16 @@ function articleFooter(
   postedBy.appendChild(text2);
   postedBy.appendChild(categoryLink);
   const articleUpload = document.createElement("p");
-  articleUpload.innerHTML = "created at : " + new Date(created).toDateString();
+  articleUpload.innerHTML =
+    "created at: " + new Date(created * 1000).toDateString();
   const articleModified = document.createElement("p");
   articleModified.innerHTML =
-    "created at : " + new Date(modified).toDateString();
+    "Modified at: " + new Date(modified * 1000).toDateString();
   div.appendChild(postedBy);
   div.appendChild(articleUpload);
   div.appendChild(articleModified);
+
+  return div; // Add this line to return the created div element
 }
+
+export default articleFooter;

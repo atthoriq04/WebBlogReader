@@ -1,4 +1,4 @@
-function articleLink(id, isAccount) {
+function articleLink(articleId, isAccount, userId, activeId) {
   const div = document.createElement("div");
   div.classList.add("articleLink");
   const readMore = document.createElement("a");
@@ -7,17 +7,25 @@ function articleLink(id, isAccount) {
   readMore.innerHTML = "Read More";
   const editArticle = document.createElement("a");
   editArticle.classList.add("editArticle");
-  editArticle.href = "manageArticle.php?editId=" + id;
+  editArticle.href = "manageArticle.php?editId=" + articleId;
   editArticle.innerHTML = "Edit";
   const deleteArticle = document.createElement("a");
   deleteArticle.classList.add("deleteArticle");
-  deleteArticle.href = "manageArticle.php?deleteId=" + id;
+  deleteArticle.href = "manageArticle.php?deleteId=" + articleId;
   deleteArticle.innerHTML = "Delete";
-  div.appendChild(readMore);
   if (!isAccount) {
+    if (userId === activeId) {
+      div.appendChild(editArticle);
+      div.appendChild(deleteArticle);
+      return div;
+    }
+    div.appendChild(readMore);
     return div;
   }
+  div.appendChild(readMore);
   div.appendChild(editArticle);
   div.appendChild(deleteArticle);
   return div;
 }
+
+export default articleLink;
