@@ -22,12 +22,12 @@ function validateArticle(titleComp, contentComp, titleVal, contentVal, form) {
   }
 }
 // ["id", "userId", "username", "name", "title", "categoryId", "Category", "notes", "createdAt", "modifiedAt", "isPrivate"]
-function showArticle(datas, parent, isAccount, userId) {
+function showArticle(datas, parent, isAccount, userId, text) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
   const h2 = document.createElement("h2");
-  h2.innerHTML = "All Notes";
+  h2.innerHTML = text;
   parent.appendChild(h2);
   datas.forEach((data) => {
     if (data.isPrivate !== false) {

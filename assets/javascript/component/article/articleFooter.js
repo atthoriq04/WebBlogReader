@@ -13,10 +13,14 @@ function articleFooter(
   const text2 = document.createTextNode(" on ");
   const usernameLink = document.createElement("a");
   usernameLink.innerHTML = username;
-  usernameLink.href = "accountPage.php?userId=" + userId;
+
+  usernameLink.classList.add("userLink");
+  usernameLink.href = userId;
+  usernameLink.id = userId;
   const categoryLink = document.createElement("a");
   categoryLink.innerHTML = category;
   categoryLink.href = categoryId;
+  categoryLink.id = categoryId;
   categoryLink.classList.add("categoryLink");
   postedBy.appendChild(text1);
   postedBy.appendChild(usernameLink);

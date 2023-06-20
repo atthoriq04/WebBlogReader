@@ -56,5 +56,15 @@ class article
     }
     public function deleteArticle($datas, $con)
     {
+        $activeUserId = $_SESSION['userdata']['userId'];
+        $condition = "id = $datas";
+        $writerUser = $this->query->dbSelectOne($con, "theNotes", "userId", $condition);
+        if ($writerUser != $activeUserId) {
+            echo "$writerUser  $activeUserId";
+            echo "FuCk YoU iNtRuDeR!!!!";
+            die;
+        }
+        $this->query->dbDelete($con, "thenotes", $condition);
+        header("location: account.php");
     }
 }

@@ -4,13 +4,14 @@ require "../data/function/connection.php";
 include_once "../data/config/article.php";
 include_once "../data/config/category.php";
 if (loginValidate()) {
+    $article = new article();
     if (isset($_POST['title'])) {
-        $article = new article();
+
         $datas = array("title" => $_POST['title'], "content" => $_POST['content'], "category" => $_POST['category'], "privacy" => $_POST['isPrivate']);
         $article->saveArticle($datas, $con);
     }
     if (isset($_GET['deleteId'])) {
-        echo "lanjoot";
+        $article->deleteArticle($_GET['deleteId'], $con);
         die;
     }
     writeArticle();

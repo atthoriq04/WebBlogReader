@@ -1,7 +1,10 @@
 <?php
 require "../data/function/validate.php";
+require "../data/function/connection.php";
+include_once "../data/config/article.php";
 if (loginValidate()) {
-    account();
+    $article = new article();
+    if ($article->getArticles($con)) account();
 }
 
 function account()

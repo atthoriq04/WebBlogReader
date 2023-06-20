@@ -45,4 +45,27 @@ document.getElementById("accountInfo").addEventListener("click", function (e) {
 });
 
 const content = document.getElementById("work");
-showArticle(masterData, content, true, userdata.userId);
+const userArticle = masterData.filter(function (a) {
+  return a.userId == userdata.userId;
+});
+console.log(userArticle);
+showArticle(
+  userArticle,
+  content,
+  true,
+  userdata.userId,
+  "Article By " + userdata.name
+);
+document.addEventListener("DOMContentLoaded", function () {
+  const articles = document.querySelectorAll(".article");
+  articles.forEach((article) => {
+    article.addEventListener("click", function (e) {
+      if (e.target.classList == "deleteArticle") {
+        const result = confirm("Want to delete?");
+        if (!result) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
+});

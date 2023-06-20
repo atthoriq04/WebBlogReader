@@ -22,16 +22,21 @@ function article(
   const text2 = document.createTextNode(" on ");
   const usernameLink = document.createElement("a");
   usernameLink.innerHTML = username;
-  usernameLink.href = "accountPage.php?userId=" + userId;
+  usernameLink.classList.add("userLink");
+  usernameLink.href = userId;
+  usernameLink.id = userId;
   const categoryLink = document.createElement("a");
   categoryLink.innerHTML = category;
+  categoryLink.id = categoryId;
   categoryLink.href = categoryId;
   categoryLink.classList.add("categoryLink");
   postedBy.appendChild(text1);
   postedBy.appendChild(usernameLink);
   postedBy.appendChild(text2);
   postedBy.appendChild(categoryLink);
-  div.appendChild(postedBy);
+  if (!isAccount) {
+    div.appendChild(postedBy);
+  }
   div.appendChild(
     articleContainer(
       title,
@@ -57,7 +62,6 @@ function articleRead(
   privacy,
   created,
   modified,
-  isAccount,
   activeId
 ) {
   const div = document.createElement("div");
