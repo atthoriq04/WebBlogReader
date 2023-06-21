@@ -1,4 +1,4 @@
-<main>
+<main class="flex">
     <div id="account">
         <div class="flashMessage">
             <p id="fMessage"></p>

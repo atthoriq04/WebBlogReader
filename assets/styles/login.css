@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
+}
+.container {
+  border-radius: 25px;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.container:hover {
+  box-shadow: 0 6px 30px rgba(100, 87, 87, 0.11);
+  transition: 300ms;
+}
+#form {
+  width: 90%;
+}
+#loginTitle {
+  margin: 30px 0px 15px 0px;
+  font-size: 1.4em;
+}
+.form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+}
+.form > label {
+  font-size: 1.1em;
+  width: 90%;
+  padding: 5px 0;
+}
+.form > input {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid black;
+  background: rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  width: 90%;
+  height: 15px;
+  padding: 13px 0px;
+  background-clip: content-box;
+}
+
+.form > input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid rgb(70, 68, 68);
+  background: rgba(255, 255, 255, 0.2);
+  background-clip: content-box;
+}
+
+form > input:-webkit-autofill {
+  -webkit-text-fill-color: black; /* Set text color to match */
+  -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.014) inset !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  /* Set background color to match */
+  background-clip: content-box;
+}
+.form > button {
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 90%;
+  border-radius: 10px;
+  background: rgb(79, 115, 243);
+  font-size: 1.2em;
+  color: #ffff;
+}
+.form > button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: 500ms;
+  color: #ffff;
+}
+.form > * {
+  padding: 5px;
+}
+.form > a {
+  margin: 20px 0;
+  text-align: center;
+  color: black;
+  font-size: 1.05em;
+  font-weight: 900;
+}
+.form > a:hover {
+  color: blue;
+}
+.form > .validate {
+  width: 90%;
+  font-size: 0.97em;
+  color: rgb(92, 4, 4);
+}

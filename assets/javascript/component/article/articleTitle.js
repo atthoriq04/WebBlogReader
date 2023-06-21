@@ -5,7 +5,7 @@ function articleTitle(title, isAccount, privacy, created, modified, readMode) {
   if (readMode) {
     articleTitle = document.createElement("h2");
   } else {
-    articleTitle = document.createElement("h4");
+    articleTitle = document.createElement("h3");
   }
   articleTitle.innerHTML = title;
   articleTitle.classList.add("title");

@@ -1,3 +1,147 @@
-.hidden {
-  visibility: hidden;
+* {
+  margin: 0;
+  padding: 0;
 }
+.menuActive {
+  color: rgb(182, 88, 88);
+}
+.flex {
+  display: flex;
+}
+.textCenter {
+  text-align: center;
+}
+.validate {
+  width: 90%;
+  font-size: 0.8em;
+  color: rgb(92, 4, 4);
+}
+
+/* CSS Above For General Use */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+/* CSS Behind For The Navbar */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #864d4d;
+  z-index: 999;
+}
+nav {
+  width: 25vw;
+}
+nav > ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+li {
+  list-style-type: none;
+}
+li > a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: black;
+}
+li > a:hover {
+  text-decoration: none;
+  color: rgb(182, 88, 88);
+}
+main {
+  margin-top: 70px;
+}
+/* CSS Above For The Navbar */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+/* CSS Behind For The Write Article Section */
+#articleForm {
+  width: 95vw;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+#articleForm > * {
+  width: 95%;
+  margin: 4px 10px;
+}
+#articleForm > input[type="text"] {
+  box-sizing: border-box;
+  height: 30px;
+  padding: 10px;
+  font-size: 1.09em;
+}
+#articleForm > label {
+  font-size: 1.1em;
+}
+#articleForm > textarea {
+  box-sizing: border-box;
+  height: 590px;
+  padding: 10px;
+  font-size: 1.05em;
+  resize: none;
+}
+#articleForm > select {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 1.05em;
+}
+.articleFormTitle {
+  justify-content: space-between;
+  align-items: center;
+}
+.articleFormSender {
+  justify-content: space-between;
+  align-items: start;
+}
+.articleFormSub > label {
+  font-size: 1.1em;
+}
+.articleFormSub > button {
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+}
+/* CSS Above For The Write Article Section */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+/* CSS Behind For Articles */
+#content > h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.article {
+  border: 1px solid black;
+  margin: 10px 5px 7px 5px;
+  border-radius: 10px;
+}
+.article > * {
+  padding: 5px;
+  margin: 6px 0;
+}
+.article > p {
+  margin: 5px 0;
+}
+.articleTitle {
+  border-color: green;
+  border-style: solid;
+  border-width: 1px 0 1px 0;
+  padding: 2px 0 30px 0;
+}
+/* CSS Above For Articles */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+/* CSS Behind For The Acount Page */
+
+/* CSS Above For The Acount Page */

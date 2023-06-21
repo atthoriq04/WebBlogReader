@@ -2,6 +2,7 @@ function registerForm() {
   const form = document.createElement("form");
   form.method = "POST";
   form.id = "fRegister";
+  form.classList.add("form");
   form.action = "../data/config/user.php";
   const username = document.createElement("input");
   username.type = "text";
@@ -38,8 +39,10 @@ function registerForm() {
   );
   const p1 = document.createElement("p");
   p1.id = "validateUser";
+  p1.classList.add("validate");
   const p2 = document.createElement("p");
   p2.id = "validatePass";
+  p2.classList.add("validate");
   form.appendChild(userLabel);
   form.appendChild(username);
   form.appendChild(p1);
@@ -58,6 +61,7 @@ function loginForm() {
   form.method = "POST";
   form.id = "fLogin";
   form.action = "../data/config/user.php";
+  form.classList.add("form");
   const username = document.createElement("input");
   username.type = "text";
   username.name = "username";
@@ -84,8 +88,10 @@ function loginForm() {
   reload.appendChild(document.createTextNode("Register your new Account"));
   const p1 = document.createElement("p");
   p1.id = "validateUser";
+  p1.classList.add("validate");
   const p2 = document.createElement("p");
   p2.id = "validatePass";
+  p2.classList.add("validate");
   form.appendChild(userLabel);
   form.appendChild(username);
   form.appendChild(p1);
