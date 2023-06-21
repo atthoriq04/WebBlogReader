@@ -4,6 +4,7 @@ function articleBody(contents, readMode) {
   if (readMode) {
     contents.forEach((content) => {
       const p = document.createElement("p");
+      p.classList.add("mainParagraph");
       p.innerHTML = content;
       div.appendChild(p);
     });

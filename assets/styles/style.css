@@ -121,22 +121,31 @@ main {
   text-align: center;
 }
 .article {
-  border: 1px solid black;
-  margin: 10px 5px 7px 5px;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 10px 10px 7px 10px;
   border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.486) 0px 7px 29px 0px;
 }
 .article > * {
   padding: 5px;
   margin: 6px 0;
 }
 .article > p {
-  margin: 5px 0;
+  margin-top: 7px;
+  margin-bottom: 0;
 }
 .articleTitle {
   border-color: green;
   border-style: solid;
   border-width: 1px 0 1px 0;
   padding: 2px 0 30px 0;
+}
+.articleMain > .mainParagraph {
+  margin: 25px 0 3px 0;
+  text-align: justify;
+}
+.articleMain > .mainParagraph:last-child {
+  margin-bottom: 20px;
 }
 /* CSS Above For Articles */
 
