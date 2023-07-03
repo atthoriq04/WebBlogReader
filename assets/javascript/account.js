@@ -66,6 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
           e.preventDefault();
         }
       }
+      if (e.target.classList == "readMore") {
+        e.preventDefault();
+        e.preventDefault();
+        const search = e.target.parentElement.parentElement.id;
+        const index = masterData.findIndex((obj) => obj.id === search);
+        readArticle(masterData[index], content, userdata.userId);
+      }
     });
   });
 });

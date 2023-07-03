@@ -12,7 +12,7 @@ class JSON
         }
         $result = file_put_contents($path, $jsonData);
         if ($result == false) {
-            echo "Error saving JSON data to file.";
+
             return false;
         }
 

@@ -10,7 +10,7 @@ class article
     public function getArticles($con)
     {
         include_once "../data/function/JSON.php";
-        $rawDatas = $this->query->dbSelect($con, "SELECT * FROM thenotes INNER JOIN user ON thenotes.userId = user.userId INNER JOIN notecategory ON thenotes.categoryId = notecategory.categoryId");
+        $rawDatas = $this->query->dbSelect($con, "SELECT * FROM theNotes INNER JOIN user ON theNotes.userId = user.userId INNER JOIN noteCategory ON theNotes.categoryId = noteCategory.categoryId ORDER BY id ASC");
         $toKeep = ["id", "userId", "username", "name", "title", "categoryId", "Category", "notes", "createdAt", "modifiedAt", "isPrivate"];
         $datas = array();
         foreach ($rawDatas as $rawData) {
@@ -28,6 +28,13 @@ class article
         $json = new JSON();
         return $json->saveData($datas, "master.json");
     }
+
+    public function getArticleById($con, $condition)
+    {
+        $rawData = $this->query->dbSelect($con, "SELECT * FROM theNotes WHERE id = $condition");
+        return $rawData[0];
+    }
+
     public function saveArticle($datas, $con)
     {
         $title = $datas["title"];
@@ -47,12 +54,21 @@ class article
         $this->query->dbInsert($con, "theNotes", $data, $col);
         header("location: index.php");
     }
-    public function editArticle($datas, $con)
+    public function editArticle($datas, $id, $con)
     {
         $title = $datas["title"];
-        $content = $datas["content"];
+        $rawContent = str_replace("'", "''", $datas["content"]);
+        $content = htmlspecialchars($rawContent);
+
         $category = $datas["category"];
         $privacy = $datas["privacy"];
+        $timeStamp =  time();
+        if (!isset($datas["privacy"])) {
+            $privacy = 0;
+        }
+        $text = "title = '$title', notes = '$content', categoryId  = '$category', isPrivate =  '$privacy',modifiedAt = '$timeStamp'";
+        $this->query->dbUpdate($con, "theNotes", $text, "id = $id");
+        header("location: index.php");
     }
     public function deleteArticle($datas, $con)
     {
@@ -64,7 +80,7 @@ class article
             echo "FuCk YoU iNtRuDeR!!!!";
             die;
         }
-        $this->query->dbDelete($con, "thenotes", $condition);
+        $this->query->dbDelete($con, "theNotes", $condition);
         header("location: account.php");
     }
 }

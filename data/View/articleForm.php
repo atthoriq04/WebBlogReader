@@ -20,7 +20,7 @@
                     <label for="isPrivate">make this content private</label>
                 </div>
                 <div class="articleFormSub">
-                    <button type="submit" name="submitArticle">
+                    <button type="submit" name="submitArticle" id="submitArticle">
                         Submit Article
                     </button>
                 </div>
