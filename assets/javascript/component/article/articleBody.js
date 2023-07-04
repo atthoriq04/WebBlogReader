@@ -9,9 +9,17 @@ function articleBody(contents, readMode) {
       div.appendChild(p);
     });
   } else {
-    const p = document.createElement("p");
-    p.innerHTML = contents[0];
-    div.appendChild(p);
+    let index = 0;
+    let char = 0;
+    while (char < 300) {
+      const p = document.createElement("p");
+      p.classList.add("previewParagraph");
+      p.innerHTML = contents[index];
+      div.appendChild(p);
+      console.log(index);
+      char += contents[index].length;
+      index++;
+    }
   }
   return div;
 }

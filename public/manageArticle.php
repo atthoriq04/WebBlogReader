@@ -14,8 +14,7 @@ if (loginValidate()) {
     }
     if (isset($_POST['title'])) {
         $datas = array("title" => $_POST['title'], "content" => $_POST['content'], "category" => $_POST['category'], "privacy" => $_POST['isPrivate']);
-        // $article->saveArticle($datas, $con);
-        echo ("INSERT");
+        $article->saveArticle($datas, $con);
         die;
     }
     if (isset($_GET['deleteId'])) {

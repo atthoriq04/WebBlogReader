@@ -20,6 +20,7 @@ class article
                     $row[$keep] = $rawData[$keep];
                     if ($keep == "notes") {
                         $row[$keep] = explode("\n", htmlspecialchars_decode($row[$keep]));
+                        $row[$keep] = str_replace("''", "'", $row[$keep]);
                     }
                 }
             }
@@ -31,8 +32,23 @@ class article
 
     public function getArticleById($con, $condition)
     {
-        $rawData = $this->query->dbSelect($con, "SELECT * FROM theNotes WHERE id = $condition");
-        return $rawData[0];
+        $rawDatas = $this->query->dbSelect($con, "SELECT * FROM theNotes WHERE id = $condition");
+        $toKeep = ["id", "title", "categoryId", "Category", "notes", "isPrivate"];
+        $datas = array();
+        foreach ($rawDatas as $rawData) {
+            $row = array();
+            foreach ($toKeep as $keep) {
+                if (isset($rawData[$keep])) {
+                    $row[$keep] = $rawData[$keep];
+                    if ($keep == "notes") {
+                        $row[$keep] = explode("\n", htmlspecialchars_decode($row[$keep]));
+                        $row[$keep] = str_replace("''", "'", $row[$keep]);
+                    }
+                }
+            }
+            $datas[] = $row;
+        }
+        return $datas[0];
     }
 
     public function saveArticle($datas, $con)

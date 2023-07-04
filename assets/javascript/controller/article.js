@@ -1,5 +1,6 @@
 import { emptyValidate } from "./functions.js";
 import { article, articleRead } from "../component/articleComponent.js";
+import emptyState from "../component/article/emptyState.js";
 
 function categorySelector(parent, datas) {
   datas.forEach((category) => {
@@ -30,7 +31,10 @@ function placingEdit(
 ) {
   titleComp.value = datas["title"];
   titleComp.name = "editTitle";
-  contentComp.innerHTML = datas["notes"];
+  datas["notes"].forEach((data) => {
+    const p = document.createTextNode(data);
+    contentComp.appendChild(p);
+  });
   categoryComp.value = datas["categoryId"];
   if (datas["isPrivate"] > 0) {
     checkBoxcomp.checked = true;
@@ -46,6 +50,12 @@ function showArticle(datas, parent, isAccount, userId, text) {
   const h2 = document.createElement("h2");
   h2.innerHTML = text;
   parent.appendChild(h2);
+  if (Object.keys(datas).length == 0) {
+    parent.appendChild(
+      emptyState("NOTHING HERE", "manageArticle.php", "to Write Articles")
+    );
+    return;
+  }
   if (!isAccount) {
     datas.forEach((data) => {
       if (data.isPrivate < 1) {

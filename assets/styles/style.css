@@ -184,6 +184,12 @@ form > * {
   display: flex;
   justify-content: space-between;
 }
+.articleMain {
+  padding: 10px 0;
+}
+.previewParagraph {
+  padding: 3px 0;
+}
 .articleTitle {
   border-color: rgb(29, 39, 29);
   border-style: solid;
@@ -217,3 +223,22 @@ form > * {
 }
 
 /* CSS Above For The Acount Page */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+/* CSS Below For Empty Stating */
+.emptyState {
+  width: 60vw;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-align: center;
+  color: #666666;
+  /* Additional styling */
+  font-weight: bold;
+  margin: 20px;
+  /* Example background and border styling */
+  padding: 20px;
+}
+/* CSS Above For Empty Stating */
