@@ -65,7 +65,12 @@ function articleRead(
   activeId
 ) {
   const div = document.createElement("div");
+  const a = document.createElement("a");
+  a.href = "";
+  a.classList.add("backButton");
+  a.innerHTML = "Back";
   div.classList.add("article");
+  div.appendChild(a);
   div.appendChild(
     articleReader(
       articleId,
