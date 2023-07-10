@@ -21,5 +21,26 @@ function charValidate(component, charLength, errorHandling, message) {
   }
   return true;
 }
+function changeMode(toggleComponent, body) {
+  const mode = localStorage.getItem("mode") || "dark";
+  if (mode === "dark") {
+    toggleComponent.checked = true;
+    body.classList.add("dark-mode");
+  } else {
+    toggleComponent.checked = false;
+    body.classList.remove("dark-mode");
+  }
+}
 
-export { emptyValidate, sameValidate, charValidate };
+function darkToogler(toogleComponent) {
+  const body = document.body;
+  toogleComponent.addEventListener("change", function () {
+    localStorage.setItem("mode", "normal");
+    if (toogleComponent.checked) {
+      localStorage.setItem("mode", "dark");
+    }
+    changeMode(toogleComponent, body);
+  });
+}
+
+export { emptyValidate, sameValidate, charValidate, darkToogler };

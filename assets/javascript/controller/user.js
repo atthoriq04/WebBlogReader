@@ -5,6 +5,7 @@ import {
   passwordEdit,
 } from "../component/userform.js";
 import { emptyValidate, sameValidate, charValidate } from "./functions.js";
+
 function showRegister() {
   const form = document.getElementById("form");
   document.getElementById("loginTitle").firstElementChild.innerHTML =

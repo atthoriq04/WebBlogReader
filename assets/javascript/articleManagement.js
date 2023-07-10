@@ -3,6 +3,9 @@ import {
   validateArticle,
   placingEdit,
 } from "./controller/article.js";
+import { darkToogler } from "./controller/functions.js";
+const toogleComponent = document.getElementById("darkModeToggle");
+darkToogler(toogleComponent);
 document.title = "Write an Article";
 
 const title = document.getElementById("title");

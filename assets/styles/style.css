@@ -3,7 +3,7 @@
   padding: 0;
 }
 .menuActive {
-  color: rgb(182, 88, 88);
+  color: var(--navHover);
 }
 .flex {
   display: flex;
@@ -16,8 +16,38 @@
   font-size: 0.8em;
   color: rgb(92, 4, 4);
 }
-
+body {
+  color: var(--textColor);
+  background-color: var(--bgColor);
+}
+a:not(li > a) {
+  color: var(--textColor);
+}
+a:not(li > a):hover {
+  font-weight: bold;
+}
 /* CSS Above For General Use */
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+/* CSS BELOW IS VARIABLE */
+
+:root {
+  --bgColor: #fefefe;
+  --navColor: #4b01b9;
+  --navText: #ffffff;
+  --navHover: #d3cfcf;
+  --textColor: #000000;
+  --boxShadow: rgba(100, 100, 111, 0.486);
+}
+.dark-mode {
+  --bgColor: #444654;
+  --navColor: #202123;
+  --navText: #ffffff;
+  --navHover: #d3cfcf;
+  --textColor: #e9e9e9;
+  --boxShadow: rgba(0, 0, 0, 0.432);
+}
+/* CSS ABOVE IS VARIABLE */
 
 /* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
@@ -31,28 +61,111 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #864d4d;
+  background-color: var(--navColor);
   z-index: 999;
 }
+
+header h1 {
+  padding-left: 20px;
+  color: var(--navText);
+}
+
 nav {
-  width: 25vw;
+  width: 400px;
+}
+#menuToggle {
+  display: none;
 }
 nav > ul {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
+
 li {
   list-style-type: none;
+  position: relative;
 }
+
 li > a {
   text-decoration: none;
   font-size: 1.2em;
-  color: black;
+  color: var(--navText);
 }
+
 li > a:hover {
   text-decoration: none;
-  color: rgb(182, 88, 88);
+  color: var(--navHover);
 }
+
+.dropdown {
+  padding-top: px;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--navColor);
+  padding: 10px;
+}
+
+.dropdown-menu li {
+  margin-bottom: 5px;
+}
+
+.dropdown-menu li:last-child {
+  margin-bottom: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 23px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 17px;
+  width: 17px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(27px);
+}
+
 main {
   margin-top: 70px;
 }
@@ -75,6 +188,7 @@ main {
 }
 #articleForm > label {
   font-size: 1.1em;
+  color: var(--textColor);
 }
 #articleForm > textarea {
   box-sizing: border-box;
@@ -85,6 +199,8 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
   line-height: 1.5;
   height: 590px;
+  color: var(--textColor);
+  background-color: var(--bgColor);
 }
 .articleFormTitle {
   justify-content: space-between;
@@ -124,6 +240,7 @@ form > input {
   height: 15px;
   padding: 13px 7px;
   background-clip: content-box;
+  color: var(--textColor);
 }
 form > select {
   box-sizing: border-box;
@@ -132,11 +249,12 @@ form > select {
   border-bottom: 2px solid black;
   background: rgba(255, 255, 255, 0.2);
   padding: 13px 0;
+  color: var(--textColor);
 }
 form > input:focus {
   border: none;
   outline: none;
-  border-bottom: 3px solid rgb(70, 68, 68);
+  border-bottom: 3px solid rgb(0, 0, 0);
   background: rgba(255, 255, 255, 0.2);
   background-clip: content-box;
 }
@@ -167,10 +285,10 @@ form > * {
   text-align: center;
 }
 .article {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid var(--bgColor);
   margin: 10px 10px 7px 10px;
   border-radius: 10px;
-  box-shadow: rgba(100, 100, 111, 0.486) 0px 7px 29px 0px;
+  box-shadow: var(--boxShadow) 0px 7px 29px 0px;
 }
 .article > * {
   padding: 5px 25px;
@@ -189,9 +307,10 @@ form > * {
 }
 .previewParagraph {
   padding: 3px 0;
+  text-align: justify;
 }
 .articleTitle {
-  border-color: rgb(29, 39, 29);
+  border-color: var(--textColor);
   border-style: solid;
   border-width: 0 0 1px 0;
   padding: 2 0 2px 0;
@@ -242,3 +361,90 @@ form > * {
   padding: 20px;
 }
 /* CSS Above For Empty Stating */
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--navColor);
+    z-index: 999;
+  }
+
+  #menuToggle {
+    display: block;
+  }
+  header h1 {
+    padding: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--navColor);
+    border: none;
+    color: var(--navText);
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    padding-top: 50px;
+    left: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: var(--navColor);
+    transition: left 0.3s ease;
+  }
+
+  nav.open {
+    left: 0;
+  }
+
+  nav.open ul {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav > ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+
+  li {
+    margin-bottom: 20px;
+  }
+
+  .accountContainer {
+    flex-direction: column;
+  }
+  #account {
+    width: 100vw;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  #work {
+    width: 100vw;
+  }
+  .switch {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+}

@@ -11,13 +11,15 @@ function articleBody(contents, readMode) {
   } else {
     let index = 0;
     let char = 0;
-    while (char < 300) {
+    while (char < 500) {
       const p = document.createElement("p");
       p.classList.add("previewParagraph");
       p.innerHTML = contents[index];
       div.appendChild(p);
-      console.log(index);
       char += contents[index].length;
+      if ((index == 5 && char < 500) || index === contents.length - 1) {
+        break;
+      }
       index++;
     }
   }

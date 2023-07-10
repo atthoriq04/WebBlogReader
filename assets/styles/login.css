@@ -106,3 +106,8 @@ form > input:-webkit-autofill {
   font-size: 0.97em;
   color: rgb(92, 4, 4);
 }
+@media (max-width: 768px) {
+  .container {
+    width: 85vw;
+  }
+}

@@ -5,6 +5,8 @@ import {
   validatePassword,
 } from "./controller/user.js";
 import { showArticle, readArticle } from "./controller/article.js";
+import { darkToogler } from "./controller/functions.js";
+darkToogler(document.getElementById("darkModeToggle"));
 const masterData = JSON.parse(JSON.stringify(master));
 const userdata = JSON.parse(user);
 document.title = "Account";
@@ -12,7 +14,6 @@ document.getElementById("username").innerHTML = userdata["username"];
 document.getElementById("name").innerHTML = userdata["name"];
 document.getElementById("role").innerHTML =
   userdata["isAdmin"] > 0 ? "admin" : "user";
-console.log(userdata.name);
 //Flash Message Controlling
 if (localStorage.getItem("message") != null) {
   let localData = JSON.parse(localStorage.getItem("message"));
@@ -48,7 +49,6 @@ const content = document.getElementById("work");
 const userArticle = masterData.filter(function (a) {
   return a.userId == userdata.userId;
 });
-console.log(userArticle);
 showArticle(
   userArticle,
   content,

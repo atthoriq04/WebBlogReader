@@ -1,15 +1,18 @@
 import master from "../jsons/master.json" assert { type: "json" };
 import { showArticle, readArticle } from "./controller/article.js";
+import { darkToogler } from "./controller/functions.js";
 if (localStorage.getItem("message") != null) {
   localStorage.removeItem("message");
 }
 const masterData = JSON.parse(JSON.stringify(master));
 const content = document.getElementById("content");
 const userdata = JSON.parse(user);
+const toogleComponent = document.getElementById("darkModeToggle");
+darkToogler(toogleComponent);
+
 showArticle(masterData, content, false, userdata.userId, "All Notes");
 document.addEventListener("DOMContentLoaded", function () {
   content.addEventListener("click", function (e) {
-    console.log(masterData);
     if (e.target.classList == "readMore") {
       e.preventDefault();
       const search = e.target.parentElement.parentElement.id;
